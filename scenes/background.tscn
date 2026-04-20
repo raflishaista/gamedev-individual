@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b5ecnt5u1g86s"]
+
+[ext_resource type="Texture2D" uid="uid://bikvko8r3i14p" path="res://assets/city2/far-buildings.png" id="1_jougr"]
+[ext_resource type="Texture2D" uid="uid://d2pintbu0hfvs" path="res://assets/city2/back-buildings.png" id="2_cbsqf"]
+[ext_resource type="Texture2D" uid="uid://b8eahi4wj3w3q" path="res://assets/city2/foreground.png" id="3_wisxt"]
+
+[node name="MarginContainer" type="MarginContainer" unique_id=1846111061]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="TextureRect" parent="." unique_id=452538268]
+layout_mode = 2
+texture = ExtResource("1_jougr")
+
+[node name="Middle" type="TextureRect" parent="." unique_id=570586899]
+layout_mode = 2
+texture = ExtResource("2_cbsqf")
+
+[node name="Fore" type="TextureRect" parent="." unique_id=1064002325]
+layout_mode = 2
+texture = ExtResource("3_wisxt")
