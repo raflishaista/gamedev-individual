@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dgjsr6wmnbqmj" path="res://assets/characters/Necromancer_creativekind-Sheet.png" id="1_jwb6q"]
 [ext_resource type="Script" uid="uid://coxu3gm3espt6" path="res://scenes/spawner.gd" id="3_tad21"]
 [ext_resource type="PackedScene" uid="uid://bw8aatq4xym30" path="res://scenes/fireball.tscn" id="4_i3brl"]
+[ext_resource type="Texture2D" uid="uid://copnafav44ejk" path="res://assets/particles/angery.png" id="5_jheub"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3vvu"]
 atlas = ExtResource("1_jwb6q")
@@ -91,9 +92,9 @@ position = Vector2(69.5, 87.5)
 shape = SubResource("RectangleShape2D_v08as")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1917269367]
-position = Vector2(-2, 85)
+position = Vector2(62, 89)
 scale = Vector2(2.4999971, 1)
-target_position = Vector2(56.00006, 0)
+target_position = Vector2(40, -21)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=949843661]
 collision_layer = 2
@@ -108,5 +109,9 @@ shape = SubResource("RectangleShape2D_g3vvu")
 position = Vector2(62, 87)
 script = ExtResource("3_tad21")
 obstacle = ExtResource("4_i3brl")
+
+[node name="anger" type="Sprite2D" parent="." unique_id=2116037195]
+position = Vector2(89, 34)
+texture = ExtResource("5_jheub")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cx8dr1mdi11xn" path="res://assets/characters/Sprite Sheet/5 - fall.png" id="2_nk5ii"]
 [ext_resource type="Texture2D" uid="uid://c2yflsrnxio5p" path="res://assets/characters/Sprite Sheet/3 - jump.png" id="3_20oud"]
 [ext_resource type="Texture2D" uid="uid://dggnyslown1dp" path="res://assets/characters/Sprite Sheet/2 - Run.png" id="4_qw8m1"]
+[ext_resource type="Texture2D" uid="uid://bixl8n2n2obib" path="res://assets/particles/finger1.png" id="6_20oud"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_llqsy"]
 atlas = ExtResource("1_ed3qw")
@@ -242,3 +243,7 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1987923866]
 position = Vector2(29.5, 52.25)
 shape = SubResource("RectangleShape2D_x4qjs")
+
+[node name="finger" type="Sprite2D" parent="." unique_id=2040308145]
+position = Vector2(59, 37)
+texture = ExtResource("6_20oud")

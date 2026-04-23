@@ -1,32 +1,79 @@
 extends CharacterBody2D
-
 @onready var ray = $RayCast2D
-const JUMP_VELOCITY = -400.0
+@onready var anger = $anger
+@onready var animplayer = $AnimatedSprite2D
+@onready var spawner = $Spawner
 
-enum State { PATROL, CHASE }
-
+enum State { PATROL, ENRAGED }
 var current_state = State.PATROL
-
 @export var speed: float = 100.0
-var direction: int = 1  # 1 = right, -1 = left
+var direction: int = 1
+var can_flip: bool = true  # prevents repeated flipping
+
+func _ready():
+	anger.visible = false
+	var protagonist = get_tree().get_first_node_in_group("protagonist")
+	if protagonist:
+		protagonist.taunted.connect(on_taunted)
+	update_ray_direction()  # set ray correctly at start
+
+func update_ray_direction():
+	# Move ray target in front of enemy based on direction
+	ray.target_position = Vector2(direction * 40, 0)
 
 func _physics_process(delta):
-	if ray.is_colliding():
-		direction *= -1
-		ray.scale.x *= -1  # flip ray direction
-	
-	velocity.y = sin(Time.get_ticks_msec() / 500.0) * 300
-	velocity.x = direction * speed
-
+	match current_state:
+		State.PATROL:
+			patrol_behavior()
+		State.ENRAGED:
+			enraged_behavior()
 	move_and_slide()
 
+func patrol_behavior():
+	if ray.is_colliding() and can_flip:
+		flip_direction()
+	velocity.y = sin(Time.get_ticks_msec() / 500.0) * 300
+	velocity.x = direction * speed
+	animplayer.flip_h = direction < 0  # sprite faces movement direction
+
+func enraged_behavior():
+	if ray.is_colliding() and can_flip:
+		flip_direction()
+	velocity.y = sin(Time.get_ticks_msec() / 500.0) * 300
+	velocity.x = direction * speed * 2
+	animplayer.flip_h = direction < 0
+
+func flip_direction():
+	can_flip = false
+	direction *= -1
+	update_ray_direction()  # point ray the new direction
+	# Small cooldown so it doesn't flip repeatedly
+	get_tree().create_timer(0.3).timeout.connect(func(): can_flip = true)
+
+# ---- STATE TRANSITIONS ----
+func change_state(new_state):
+	current_state = new_state
+	match new_state:
+		State.PATROL:
+			anger.visible = false
+			if spawner:
+				spawner.set_fire_rate(2.0)
+		State.ENRAGED:
+			anger.visible = true
+			if spawner:
+				spawner.set_fire_rate(1.0)
+
+func on_taunted():
+	if current_state == State.PATROL:
+		change_state(State.ENRAGED)
+		await get_tree().create_timer(10).timeout
+		if is_instance_valid(self):
+			change_state(State.PATROL)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.get_name() == "protagonist":
-		var protagonist = body
-		if not protagonist.invulnerable:
+	if body.is_in_group("protagonist"):
+		if not body.invulnerable:
 			Global.lives -= 1
 			Global.life_lost.emit()
-		if Global.lives == 0:
+		if Global.lives <= 0:
 			get_tree().change_scene_to_file("res://scenes/Game Over.tscn")
-	pass # Replace with function body.
