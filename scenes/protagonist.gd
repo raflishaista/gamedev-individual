@@ -19,7 +19,7 @@ func _ready():
 
 func _get_input():
 	# Jumping
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_up"):
 		if is_on_floor():
 			velocity.y = JUMP_SPEED
 			can_doublejump = true

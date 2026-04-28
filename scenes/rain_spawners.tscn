@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dfri76c0u3ak"]
+
+[ext_resource type="Script" uid="uid://cc5mt1i2v6agt" path="res://rain_spawner.gd" id="1_6pjaq"]
+[ext_resource type="PackedScene" uid="uid://bw8aatq4xym30" path="res://scenes/fireball.tscn" id="2_183s0"]
+
+[node name="Rain spawners" type="Node2D" unique_id=2112569817]
+
+[node name="rain spawner" type="Node2D" parent="." unique_id=68312847]
+position = Vector2(105, 0)
+script = ExtResource("1_6pjaq")
+obstacle = ExtResource("2_183s0")
+
+[node name="rain spawner2" type="Node2D" parent="." unique_id=249646714]
+position = Vector2(215, -3)
+script = ExtResource("1_6pjaq")
+obstacle = ExtResource("2_183s0")

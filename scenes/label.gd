@@ -8,5 +8,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.text = "Timer : " + str(int(Global.time)) + "\n" + "Lives : " + str(int(Global.lives))
+	self.text = "Patience : " + str(int(Global.time)) + "\n" + "Lives : " + str(int(Global.lives))
 	pass
