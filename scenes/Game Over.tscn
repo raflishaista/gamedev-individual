@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://balo3rdgfmvky"]
+[gd_scene format=3 uid="uid://dwokqk7al257s"]
 
-[ext_resource type="Script" uid="uid://cb2a1072ski78" path="res://scenes/link_button.gd" id="1_vlb8f"]
+[ext_resource type="Texture2D" uid="uid://ceyv75gtx6x2v" path="res://assets/backgrounds/losing.png" id="1_8vl1a"]
+[ext_resource type="Script" uid="uid://cb2a1072ski78" path="res://scenes/link_button.gd" id="2_1pr72"]
+[ext_resource type="Texture2D" uid="uid://hqho02mjhtfo" path="res://assets/menu/LOSS.png" id="2_lj1s0"]
+[ext_resource type="Script" uid="uid://dwdsra0rp6w74" path="res://scenes/link_button_2.gd" id="4_1pr72"]
 
 [sub_resource type="Theme" id="Theme_ihdkw"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_vlb8f"]
-font_size = 74
 
 [node name="MarginContainer" type="MarginContainer" unique_id=998421077]
 anchors_preset = 15
@@ -15,24 +15,72 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ihdkw")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1300095892]
+layout_mode = 2
+texture = ExtResource("1_8vl1a")
+stretch_mode = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1218722949]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2" unique_id=1831944647]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/VBoxContainer" unique_id=1873723518]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer2/VBoxContainer/MarginContainer" unique_id=1299810159]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+script = ExtResource("2_1pr72")
+scene_to_load = "level1"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=543851961]
 layout_mode = 2
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=239767064]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer" unique_id=1756419004]
+layout_mode = 2
+texture = ExtResource("2_lj1s0")
+stretch_mode = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="." unique_id=1277754346]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer3" unique_id=991273600]
+layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=2085591372]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer3/VBoxContainer" unique_id=1408725392]
 layout_mode = 2
-text = "GAME OVER"
-label_settings = SubResource("LabelSettings_vlb8f")
+theme_override_constants/margin_right = 46
 
-[node name="LinkButton" type="LinkButton" parent="HBoxContainer/VBoxContainer" unique_id=1853415981]
+[node name="LinkButton2" type="LinkButton" parent="HBoxContainer3/VBoxContainer/MarginContainer" unique_id=1100465790]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "RETURN"
-script = ExtResource("1_vlb8f")
+theme_override_font_sizes/font_size = 34
+text = "Return to Menu"
+underline = 2
+script = ExtResource("4_1pr72")
 scene_to_load = "Game START"
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/LinkButton" to="HBoxContainer/VBoxContainer/LinkButton" method="_on_pressed"]
+[node name="LinkButton3" type="LinkButton" parent="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2" unique_id=1373496676]
+layout_mode = 0
+offset_left = -748.0
+offset_top = 10.0
+offset_right = -660.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 34
+text = "Retry"
+underline = 2
+script = ExtResource("4_1pr72")
+scene_to_load = "level1"
+
+[connection signal="pressed" from="HBoxContainer2/VBoxContainer/MarginContainer/LinkButton" to="HBoxContainer2/VBoxContainer/MarginContainer/LinkButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2" to="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2/LinkButton3" to="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2/LinkButton3" method="_on_pressed"]

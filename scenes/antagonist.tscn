@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://coxu3gm3espt6" path="res://scenes/spawner.gd" id="3_tad21"]
 [ext_resource type="PackedScene" uid="uid://bw8aatq4xym30" path="res://scenes/fireball.tscn" id="4_i3brl"]
 [ext_resource type="Texture2D" uid="uid://copnafav44ejk" path="res://assets/particles/angery.png" id="5_jheub"]
+[ext_resource type="Script" uid="uid://ba30l2wtlyxtm" path="res://scenes/bomb_spawner.gd" id="5_oms0e"]
+[ext_resource type="PackedScene" uid="uid://cl7ani3t77mkr" path="res://scenes/bomb.tscn" id="6_n6i5n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3vvu"]
 atlas = ExtResource("1_jwb6q")
@@ -109,6 +111,11 @@ shape = SubResource("RectangleShape2D_g3vvu")
 position = Vector2(62, 87)
 script = ExtResource("3_tad21")
 obstacle = ExtResource("4_i3brl")
+
+[node name="BombSpawner" type="Node2D" parent="." unique_id=328299032]
+position = Vector2(62, 87)
+script = ExtResource("5_oms0e")
+bomb_scene = ExtResource("6_n6i5n")
 
 [node name="anger" type="Sprite2D" parent="." unique_id=2116037195]
 position = Vector2(89, 34)

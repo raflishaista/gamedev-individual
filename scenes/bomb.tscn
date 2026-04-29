@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cl7ani3t77mkr"]
+
+[ext_resource type="Script" uid="uid://cbwrr444n2faw" path="res://scenes/bomb.gd" id="1_gxn8a"]
+[ext_resource type="Texture2D" uid="uid://cubauvybh2hk" path="res://assets/particles/bombprojectile.png" id="2_gxn8a"]
+[ext_resource type="PackedScene" uid="uid://onqlo7202fo4" path="res://scenes/explosion.tscn" id="2_j15uc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7kba2"]
+radius = 38.006554
+height = 106.009766
+
+[node name="bomb" type="Area2D" unique_id=612590616]
+rotation = -3.1472507
+collision_mask = 3
+script = ExtResource("1_gxn8a")
+explosion_scene = ExtResource("2_j15uc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1800483817]
+rotation = 1.5724485
+scale = Vector2(0.59984255, 0.36000323)
+shape = SubResource("CapsuleShape2D_7kba2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=20095784]
+position = Vector2(-2, 0)
+rotation = -3.1124837
+scale = Vector2(0.7522642, 0.80549914)
+texture = ExtResource("2_gxn8a")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=132033253]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

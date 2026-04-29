@@ -1,11 +1,10 @@
-[gd_scene format=3 uid="uid://dc5helbut5utu"]
+[gd_scene format=3 uid="uid://cdbepxnecn3tj"]
 
-[ext_resource type="Script" uid="uid://cb2a1072ski78" path="res://scenes/link_button.gd" id="1_bptrl"]
+[ext_resource type="Texture2D" uid="uid://bab5xmv4iha31" path="res://assets/backgrounds/title screen v2.png" id="1_xi7t8"]
+[ext_resource type="Texture2D" uid="uid://xkxh1kjnog8l" path="res://assets/menu/TITLE.png" id="2_dufa3"]
+[ext_resource type="Script" uid="uid://cb2a1072ski78" path="res://scenes/link_button.gd" id="3_dufa3"]
 
 [sub_resource type="Theme" id="Theme_ihdkw"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_vlb8f"]
-font_size = 74
 
 [node name="MarginContainer" type="MarginContainer" unique_id=998421077]
 anchors_preset = 15
@@ -15,25 +14,40 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ihdkw")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1300095892]
+layout_mode = 2
+texture = ExtResource("1_xi7t8")
+stretch_mode = 3
+
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=543851961]
 layout_mode = 2
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=239767064]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer" unique_id=1756419004]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+texture = ExtResource("2_dufa3")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=1836307845]
+layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=2085591372]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1546951303]
 layout_mode = 2
-text = "GAME"
-label_settings = SubResource("LabelSettings_vlb8f")
+theme_override_constants/margin_top = 58
 
-[node name="LinkButton" type="LinkButton" parent="HBoxContainer/VBoxContainer" unique_id=1853415981]
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer" unique_id=978371923]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 45
 text = "START"
 underline = 2
-script = ExtResource("1_bptrl")
+script = ExtResource("3_dufa3")
 scene_to_load = "level1"
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/LinkButton" to="HBoxContainer/VBoxContainer/LinkButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/LinkButton" to="HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/LinkButton" method="_on_pressed"]

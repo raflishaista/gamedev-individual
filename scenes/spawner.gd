@@ -3,8 +3,8 @@ extends Node2D
 @export var fire_rate: float = 2.0
 @export var rain_spread: float = 300.0
 var rain_mode: bool = false
-const Fireball = preload("res://scenes/fireball.tscn")
-var active_fireballs: int = 0  # counter
+var active_fireballs: int = 0
+var is_paused: bool = false  # new flag
 
 func set_fire_rate(new_rate: float):
 	fire_rate = new_rate
@@ -12,24 +12,28 @@ func set_fire_rate(new_rate: float):
 func set_rain_mode(enabled: bool):
 	rain_mode = enabled
 
+func set_paused(paused: bool):
+	is_paused = paused
+
 func all_fireballs_gone() -> bool:
 	return active_fireballs <= 0
 
 func spawn():
-	var spawned: Area2D = obstacle.instantiate()
-	var fireball = spawned as Node  # cast to access script properties
+	if is_paused:  # skip spawning if paused
+		return
+	var spawned = obstacle.instantiate()
 	var protagonist = get_tree().get_first_node_in_group("protagonist")
 
 	if rain_mode and protagonist:
-		fireball.set("spawn_position", Vector2(
+		spawned.set("spawn_position", Vector2(
 			protagonist.global_position.x + randf_range(-rain_spread, rain_spread),
 			protagonist.global_position.y - 400
 		))
-		fireball.set("direction", Vector2(randf_range(-0.2, 0.2), 1).normalized())
+		spawned.set("direction", Vector2(randf_range(-0.2, 0.2), 1).normalized())
 	elif protagonist:
 		var dir = (protagonist.global_position - global_position).normalized()
-		fireball.set("direction", dir)
-		fireball.set("spawn_position", global_position)
+		spawned.set("direction", dir)
+		spawned.set("spawn_position", global_position)
 
 	active_fireballs += 1
 	spawned.tree_exited.connect(func(): active_fireballs -= 1)
