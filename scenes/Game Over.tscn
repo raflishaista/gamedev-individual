@@ -82,7 +82,7 @@ theme_override_font_sizes/font_size = 34
 text = "Retry"
 underline = 2
 script = ExtResource("4_1pr72")
-scene_to_load = "level1"
+scene_to_load = "level2"
 click_sound = ExtResource("5_epr16")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2126473370]

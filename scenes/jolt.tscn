@@ -66,6 +66,7 @@ shape = SubResource("CapsuleShape2D_7kba2")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1392681628]
 position = Vector2(-2, 0)
+rotation = 3.1390214
 scale = Vector2(1.3170853, 1.3170853)
 sprite_frames = SubResource("SpriteFrames_ds60g")
 autoplay = "default"

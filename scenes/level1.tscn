@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://lafd8s1ffi6f" path="res://scenes/margin_container.tscn" id="6_u3awl"]
 [ext_resource type="AudioStream" uid="uid://cy0w6cr0sahp8" path="res://assets/music/themes/fire_fight.ogg" id="7_bbk5w"]
 [ext_resource type="AudioStream" uid="uid://b3tnouj1cxtkn" path="res://assets/music/se/ready.ogg" id="7_conm7"]
+[ext_resource type="Script" uid="uid://fnvsxrvyofcn" path="res://scenes/canvas_layer_2.gd" id="9_d3jkd"]
+[ext_resource type="Texture2D" uid="uid://c2e2yyo2oeoy7" path="res://assets/menu/PAUSED.png" id="10_u3awl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ppgk2"]
 texture = ExtResource("3_bbk5w")
@@ -125,3 +127,45 @@ scene_to_load = "SLASH"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1619210941]
 stream = ExtResource("7_bbk5w")
 autoplay = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1065259569]
+process_mode = 3
+script = ExtResource("9_d3jkd")
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer2" unique_id=1507682937]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer2/PauseMenu" unique_id=1430816816]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/PauseMenu" unique_id=193293731]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 235.0
+offset_right = 943.0
+offset_bottom = 369.0
+texture = ExtResource("10_u3awl")
+
+[node name="Button" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1460186635]
+layout_mode = 0
+offset_left = 524.0
+offset_top = 390.0
+offset_right = 594.0
+offset_bottom = 421.0
+text = "Resume"
+
+[node name="Button2" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=812784327]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 452.0
+offset_right = 628.0
+offset_bottom = 483.0
+text = "Return to Menu"
+
+[connection signal="pressed" from="CanvasLayer2/PauseMenu/Button" to="CanvasLayer2" method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PauseMenu/Button2" to="CanvasLayer2" method="_on_quit_pressed"]

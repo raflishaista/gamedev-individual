@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://lafd8s1ffi6f" path="res://scenes/margin_container.tscn" id="6_76toy"]
 [ext_resource type="AudioStream" uid="uid://cuee4f3mmawtk" path="res://assets/music/themes/lighning battle.ogg" id="7_6ep0u"]
 [ext_resource type="AudioStream" uid="uid://b3tnouj1cxtkn" path="res://assets/music/se/ready.ogg" id="7_hrcei"]
+[ext_resource type="Script" uid="uid://fnvsxrvyofcn" path="res://scenes/canvas_layer_2.gd" id="9_bo4dx"]
+[ext_resource type="Texture2D" uid="uid://c2e2yyo2oeoy7" path="res://assets/menu/PAUSED.png" id="10_76toy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ppgk2"]
 texture = ExtResource("3_hrcei")
@@ -111,9 +113,6 @@ position = Vector2(117, 427)
 
 [node name="antagonist2" parent="." unique_id=1599931492 instance=ExtResource("5_hrcei")]
 position = Vector2(904, 429)
-speed = null
-gravity = null
-jump_force = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1101174760]
 
@@ -124,3 +123,45 @@ scene_to_load = "SLASH 2"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=853825354]
 stream = ExtResource("7_6ep0u")
 autoplay = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=593819922]
+process_mode = 3
+script = ExtResource("9_bo4dx")
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer2" unique_id=1151345722]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer2/PauseMenu" unique_id=815776336]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/PauseMenu" unique_id=353680805]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 235.0
+offset_right = 943.0
+offset_bottom = 369.0
+texture = ExtResource("10_76toy")
+
+[node name="Button" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=128110303]
+layout_mode = 0
+offset_left = 524.0
+offset_top = 390.0
+offset_right = 594.0
+offset_bottom = 421.0
+text = "Resume"
+
+[node name="Button2" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1622396881]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 452.0
+offset_right = 628.0
+offset_bottom = 483.0
+text = "Return to Menu"
+
+[connection signal="pressed" from="CanvasLayer2/PauseMenu/Button" to="CanvasLayer2" method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PauseMenu/Button2" to="CanvasLayer2" method="_on_quit_pressed"]

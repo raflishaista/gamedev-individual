@@ -17,6 +17,8 @@ var can_flip: bool = true
 var is_bombing: bool = false
 
 func _ready():
+	# Make entire antagonist subtree pause-aware
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	anger.visible = false
 	var protagonist = get_tree().get_first_node_in_group("protagonist")
 	if protagonist:
@@ -42,7 +44,7 @@ func run_pattern():
 	while true:
 		# --- PATROL PHASE ---
 		change_state(State.PATROL if not is_enraged() else State.ENRAGED)
-		await get_tree().create_timer(8.0).timeout
+		await get_tree().create_timer(8.0, true).timeout
 		if not is_instance_valid(self): return
 
 		# --- RAIN PHASE ---
@@ -51,7 +53,7 @@ func run_pattern():
 
 		# --- PATROL PHASE ---
 		change_state(State.PATROL if not is_enraged() else State.ENRAGED)
-		await get_tree().create_timer(5.0).timeout
+		await get_tree().create_timer(5.0, true).timeout
 		if not is_instance_valid(self): return
 
 		# --- BOMB PHASE ---
@@ -65,7 +67,7 @@ func do_rain() -> void:
 	is_raining = true
 	change_state(State.ENRAGED_RAIN if is_enraged() else State.RAIN)
 
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(3.0, true).timeout
 	if not is_instance_valid(self): return
 
 	if spawner:
@@ -76,7 +78,7 @@ func do_rain() -> void:
 	var wait_time = 0.0
 	var max_wait = 3.0
 	while spawner and not spawner.all_fireballs_gone() and wait_time < max_wait:
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.1, true).timeout
 		if not is_instance_valid(self): return
 		wait_time += 0.1
 
@@ -93,7 +95,7 @@ func do_bomb() -> void:
 	if spawner:
 		spawner.set_paused(true)
 
-	await get_tree().create_timer(4.0).timeout
+	await get_tree().create_timer(4.0, true).timeout
 	if not is_instance_valid(self): return
 
 	if bomb_spawner:
@@ -102,7 +104,7 @@ func do_bomb() -> void:
 	var wait_time = 0.0
 	var max_wait = 3.0
 	while bomb_spawner and not bomb_spawner.all_bombs_gone() and wait_time < max_wait:
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.1, true).timeout
 		if not is_instance_valid(self): return
 		wait_time += 0.1
 
@@ -157,7 +159,7 @@ func flip_direction():
 	can_flip = false
 	direction *= -1
 	update_ray_direction()
-	get_tree().create_timer(0.3).timeout.connect(func(): can_flip = true)
+	get_tree().create_timer(0.3, true).timeout.connect(func(): can_flip = true)
 
 func change_state(new_state):
 	current_state = new_state
@@ -228,7 +230,7 @@ func on_taunted():
 		State.BOMB:
 			change_state(State.ENRAGED_BOMB)
 
-	await get_tree().create_timer(10.0).timeout
+	await get_tree().create_timer(10.0, true).timeout
 	if not is_instance_valid(self): return
 
 	# Downgrade back to normal equivalent after 10 seconds

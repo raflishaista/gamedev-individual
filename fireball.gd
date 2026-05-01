@@ -7,6 +7,7 @@ var spawn_position = Vector2.ZERO
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	global_position = spawn_position  # set position here instead of spawner
 	rotation = direction.angle() + PI
 

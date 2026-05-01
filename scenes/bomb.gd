@@ -7,6 +7,7 @@ var spawn_position = Vector2.ZERO
 @export var explosion_scene: PackedScene
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	global_position = spawn_position
 	rotation = direction.angle()
 

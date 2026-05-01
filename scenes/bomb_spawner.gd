@@ -31,9 +31,10 @@ func spawn():
 	get_tree().current_scene.call_deferred("add_child", spawned)
 	
 func _ready():
+	process_mode = Node.PROCESS_MODE_INHERIT
 	repeat()
 
 func repeat():
 	while true:
 		spawn()
-		await get_tree().create_timer(fire_rate).timeout
+		await get_tree().create_timer(fire_rate, true).timeout

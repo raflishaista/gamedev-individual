@@ -51,6 +51,7 @@ func force_clear():
 	active_fireballs = 0
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_INHERIT
 	audio_player = AudioStreamPlayer2D.new()
 	add_child(audio_player)
 	audio_player.stream = click_sound
@@ -59,4 +60,4 @@ func _ready():
 func repeat():
 	while true:
 		spawn()
-		await get_tree().create_timer(fire_rate).timeout
+		await get_tree().create_timer(fire_rate, true).timeout
