@@ -232,6 +232,9 @@ size = Vector2(57, 95.5)
 [node name="protagonist" type="CharacterBody2D" unique_id=289979748 groups=["protagonist"]]
 collision_layer = 2
 script = ExtResource("1_nk5ii")
+SPEED = null
+JUMP_SPEED = null
+GRAVITY = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=72353766]
 position = Vector2(31.999985, 59)
@@ -245,5 +248,5 @@ position = Vector2(29.5, 52.25)
 shape = SubResource("RectangleShape2D_x4qjs")
 
 [node name="finger" type="Sprite2D" parent="." unique_id=2040308145]
-position = Vector2(59, 37)
+position = Vector2(72, 38)
 texture = ExtResource("6_20oud")

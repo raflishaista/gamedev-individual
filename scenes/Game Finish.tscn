@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://d26f2r84gml0t" path="res://assets/backgrounds/victory.png" id="1_m7lnn"]
 [ext_resource type="Texture2D" uid="uid://bo17sk3i8hnlr" path="res://assets/menu/VICTORYpsd.png" id="2_tqkf6"]
 [ext_resource type="Script" uid="uid://dwdsra0rp6w74" path="res://scenes/link_button_2.gd" id="4_feo2x"]
+[ext_resource type="AudioStream" uid="uid://c3c0346m4q3f7" path="res://assets/music/themes/victory.ogg" id="4_ve714"]
+[ext_resource type="AudioStream" uid="uid://de0tsj6268x05" path="res://assets/music/se/menubutton.ogg" id="4_xdg5k"]
 
 [sub_resource type="Theme" id="Theme_ihdkw"]
 
@@ -29,11 +31,6 @@ alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/VBoxContainer" unique_id=502888187]
 layout_mode = 2
 theme_override_constants/margin_left = 100
-
-[node name="LinkButton" type="LinkButton" parent="HBoxContainer2/VBoxContainer/MarginContainer" unique_id=1367796877]
-layout_mode = 2
-theme_override_font_sizes/font_size = 34
-uri = "level1"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=543851961]
 layout_mode = 2
@@ -64,9 +61,11 @@ theme_override_constants/margin_right = 100
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "Return to Menu "
+underline = 2
 uri = "Game START"
 script = ExtResource("4_feo2x")
 scene_to_load = "Game START"
+click_sound = ExtResource("4_xdg5k")
 
 [node name="LinkButton3" type="LinkButton" parent="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2" unique_id=591814236]
 layout_mode = 0
@@ -75,9 +74,15 @@ offset_right = -400.0
 offset_bottom = 47.0
 theme_override_font_sizes/font_size = 34
 text = "Retry"
+underline = 2
 uri = "Game START"
 script = ExtResource("4_feo2x")
 scene_to_load = "level1"
+click_sound = ExtResource("4_xdg5k")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=508784929]
+stream = ExtResource("4_ve714")
+autoplay = true
 
 [connection signal="pressed" from="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2" to="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2/LinkButton3" to="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2/LinkButton3" method="_on_pressed"]

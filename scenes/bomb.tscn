@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cl7ani3t77mkr"]
 
 [ext_resource type="Script" uid="uid://cbwrr444n2faw" path="res://scenes/bomb.gd" id="1_gxn8a"]
+[ext_resource type="AudioStream" uid="uid://cqi3ux5tsfvoi" path="res://assets/music/se/explosion.ogg" id="2_84slv"]
 [ext_resource type="Texture2D" uid="uid://cubauvybh2hk" path="res://assets/particles/bombprojectile.png" id="2_gxn8a"]
 [ext_resource type="PackedScene" uid="uid://onqlo7202fo4" path="res://scenes/explosion.tscn" id="2_j15uc"]
 
@@ -12,6 +13,7 @@ height = 106.009766
 rotation = -3.1472507
 collision_mask = 3
 script = ExtResource("1_gxn8a")
+explosion_sound = ExtResource("2_84slv")
 explosion_scene = ExtResource("2_j15uc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1800483817]

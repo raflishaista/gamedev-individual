@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://onqlo7202fo4"]
 
 [ext_resource type="Script" uid="uid://dxe7x3ywes2t5" path="res://scenes/explosion.gd" id="1_nfeox"]
+[ext_resource type="AudioStream" uid="uid://ck5vm0rpmtxg2" path="res://assets/music/se/hit.ogg" id="2_aw4cw"]
 [ext_resource type="Texture2D" uid="uid://boihd40ng2h6b" path="res://assets/particles/Explosion.png" id="2_nfeox"]
+[ext_resource type="AudioStream" uid="uid://lgxcjh6lfevl" path="res://assets/music/se/gameover.ogg" id="3_3el85"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aw4cw"]
 
@@ -101,6 +103,9 @@ animations = [{
 rotation = -3.1472507
 collision_mask = 6
 script = ExtResource("1_nfeox")
+emit_sound = ExtResource("2_aw4cw")
+hit_sound = ExtResource("2_aw4cw")
+gameover_sound = ExtResource("3_3el85")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1800483817]
 rotation = 1.5724485

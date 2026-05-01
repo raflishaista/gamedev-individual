@@ -1,12 +1,20 @@
-extends Label
+extends MarginContainer
 
+@onready var label = $Label
+var can_win: bool = false  # locked until timer ends
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _ready():
+	Global.time_up.connect(_on_time_up)
 
+func _on_time_up():
+	can_win = true
+	# Optional: show a prompt so the player knows they can escape
+	label.text = "Press X to Win!"
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _input(event):
+	if event.is_action_pressed("win") and can_win:
+		get_tree().change_scene_to_file("res://scenes/SLASH.tscn")
+
 func _process(delta: float) -> void:
-	self.text = "Patience : " + str(int(Global.time)) + "\n" + "Lives : " + str(int(Global.lives))
-	pass
+	if Global.time > 0:
+		label.text = "Timer : " + str(int(Global.time)) + "\n" + "Lives : " + str(int(Global.lives))

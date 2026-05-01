@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://5awcgg4qklp5"]
+
+[ext_resource type="Texture2D" uid="uid://b8018uyexfrqa" path="res://assets/city/middle.png" id="2_rrsai"]
+[ext_resource type="Texture2D" uid="uid://b1d7wwivwnlbm" path="res://assets/city/foreground.png" id="3_hqjhk"]
+
+[node name="BackgroundStage2" type="Control" unique_id=1411903534]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2149.7144
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="ColorRect" parent="." unique_id=1907716679]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 2797.7144
+scale = Vector2(1.010823, 1.010823)
+color = Color(0.16881311, 0.072190665, 0.058969438, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=937288092]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -39.0
+offset_right = 280.0
+offset_bottom = 233.0
+scale = Vector2(3.312727, 3.312727)
+texture = ExtResource("2_rrsai")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=930432554]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.3878949, 2.3878949)
+texture = ExtResource("3_hqjhk")

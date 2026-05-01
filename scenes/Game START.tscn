@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bab5xmv4iha31" path="res://assets/backgrounds/title screen v2.png" id="1_xi7t8"]
 [ext_resource type="Texture2D" uid="uid://xkxh1kjnog8l" path="res://assets/menu/TITLE.png" id="2_dufa3"]
 [ext_resource type="Script" uid="uid://cb2a1072ski78" path="res://scenes/link_button.gd" id="3_dufa3"]
+[ext_resource type="AudioStream" uid="uid://bv5bo75ke26xe" path="res://assets/music/themes/title.ogg" id="4_n3mnn"]
+[ext_resource type="AudioStream" uid="uid://de0tsj6268x05" path="res://assets/music/se/menubutton.ogg" id="4_uu41x"]
 
 [sub_resource type="Theme" id="Theme_ihdkw"]
 
@@ -48,6 +50,12 @@ theme_override_font_sizes/font_size = 45
 text = "START"
 underline = 2
 script = ExtResource("3_dufa3")
-scene_to_load = "level1"
+scene_to_load = "Game Select Stage"
+click_sound = ExtResource("4_uu41x")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=257138720]
+stream = ExtResource("4_n3mnn")
+volume_db = 1.292
+autoplay = true
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/LinkButton" to="HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/LinkButton" method="_on_pressed"]

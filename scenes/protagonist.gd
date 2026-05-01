@@ -12,6 +12,8 @@ var dash_velocity := 0.0
 var dash_direction := 0.0
 var invulnerable = false
 
+var finger_base_position = Vector2(72, 38)
+
 func _ready():
 	Global.life_lost.connect(_on_life_lost)
 	taunted.connect(Global.on_taunted)
@@ -75,7 +77,15 @@ func _on_life_lost():
 		start_invulnerability()
 		
 func show_finger():
-	finger.flip_h = animplayer.flip_h  # match the protagonist's facing direction
+	finger.flip_h = animplayer.flip_h
+	if animplayer.flip_h:
+		var mirror_axis = animplayer.position.x
+		finger.position = Vector2(
+			2 * mirror_axis - finger_base_position.x,
+			finger_base_position.y
+		)
+	else:
+		finger.position = finger_base_position
 	finger.visible = true
 	await get_tree().create_timer(0.3).timeout
 	finger.visible = false

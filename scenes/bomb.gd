@@ -2,6 +2,7 @@ extends Area2D
 @export var speed: float = 400.0
 var direction = Vector2.ZERO
 var spawn_position = Vector2.ZERO
+@export var explosion_sound: AudioStream
 
 @export var explosion_scene: PackedScene
 
@@ -13,6 +14,7 @@ func _process(delta):
 	global_position += direction * speed * delta
 
 func _on_body_entered(body):
+	SoundManager.play_at(explosion_sound, global_position)
 	explode()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

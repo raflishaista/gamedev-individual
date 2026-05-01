@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://cb2a1072ski78" path="res://scenes/link_button.gd" id="2_1pr72"]
 [ext_resource type="Texture2D" uid="uid://hqho02mjhtfo" path="res://assets/menu/LOSS.png" id="2_lj1s0"]
 [ext_resource type="Script" uid="uid://dwdsra0rp6w74" path="res://scenes/link_button_2.gd" id="4_1pr72"]
+[ext_resource type="AudioStream" uid="uid://si7st2jav5ja" path="res://assets/music/themes/game over.ogg" id="5_dj0mq"]
+[ext_resource type="AudioStream" uid="uid://de0tsj6268x05" path="res://assets/music/se/menubutton.ogg" id="5_epr16"]
 
 [sub_resource type="Theme" id="Theme_ihdkw"]
 
@@ -68,6 +70,7 @@ text = "Return to Menu"
 underline = 2
 script = ExtResource("4_1pr72")
 scene_to_load = "Game START"
+click_sound = ExtResource("5_epr16")
 
 [node name="LinkButton3" type="LinkButton" parent="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2" unique_id=1373496676]
 layout_mode = 0
@@ -80,6 +83,11 @@ text = "Retry"
 underline = 2
 script = ExtResource("4_1pr72")
 scene_to_load = "level1"
+click_sound = ExtResource("5_epr16")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2126473370]
+stream = ExtResource("5_dj0mq")
+autoplay = true
 
 [connection signal="pressed" from="HBoxContainer2/VBoxContainer/MarginContainer/LinkButton" to="HBoxContainer2/VBoxContainer/MarginContainer/LinkButton" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2" to="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2" method="_on_pressed"]

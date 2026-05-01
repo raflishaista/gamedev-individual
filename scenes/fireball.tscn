@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bw8aatq4xym30"]
 
 [ext_resource type="Script" uid="uid://cpf8t4kqjppse" path="res://fireball.gd" id="1_1gl40"]
+[ext_resource type="AudioStream" uid="uid://ck5vm0rpmtxg2" path="res://assets/music/se/hit.ogg" id="2_7kba2"]
 [ext_resource type="Texture2D" uid="uid://bdtsq63ef7df3" path="res://assets/particles/fireball.png" id="2_cb14k"]
+[ext_resource type="AudioStream" uid="uid://lgxcjh6lfevl" path="res://assets/music/se/gameover.ogg" id="3_7kba2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7kba2"]
 radius = 38.006554
@@ -11,6 +13,8 @@ height = 106.009766
 rotation = -3.1472507
 collision_mask = 6
 script = ExtResource("1_1gl40")
+emit_sound = ExtResource("2_7kba2")
+gameover_sound = ExtResource("3_7kba2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1800483817]
 rotation = 1.5724485

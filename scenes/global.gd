@@ -1,5 +1,6 @@
 extends Node
 signal life_lost
+signal time_up
 var time: float = 90
 var lives: int = 3
 var tick_rate: float = 1.0
@@ -16,7 +17,8 @@ func _process(delta: float) -> void:
 	if time > 0:
 		time -= delta * tick_rate
 		if time <= 0:
-			get_tree().change_scene_to_file("res://scenes/Game Finish.tscn")
+			time = 0
+			time_up.emit()
 
 func on_taunted():
 	if current_state == State.NORMAL:

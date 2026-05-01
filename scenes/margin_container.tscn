@@ -5,8 +5,18 @@
 [node name="MarginContainer" type="MarginContainer" unique_id=1630687316]
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_d14fk")
+
+[node name="Control" type="Control" parent="." unique_id=2062841906]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=2059336704]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3.1917942, 1.6286535)
+color = Color(0.0121183405, 0.0121183405, 0.0121183405, 1)
 
 [node name="Label" type="Label" parent="." unique_id=1042691460]
 layout_mode = 2
 horizontal_alignment = 3
-script = ExtResource("1_d14fk")

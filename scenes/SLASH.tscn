@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cv8k6kxhfx3da"]
+
+[ext_resource type="Texture2D" uid="uid://pu5iivjpfhky" path="res://assets/backgrounds/slash.png" id="1_bq7uu"]
+[ext_resource type="Script" uid="uid://cw4jmcqp3wade" path="res://scenes/slash.gd" id="1_s5y64"]
+
+[sub_resource type="Theme" id="Theme_ihdkw"]
+
+[node name="slash" type="MarginContainer" unique_id=998421077]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ihdkw")
+script = ExtResource("1_s5y64")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1566946351]
+layout_mode = 2
+texture = ExtResource("1_bq7uu")

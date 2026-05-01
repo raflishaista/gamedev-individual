@@ -2,11 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bv1y1fq23xama" path="res://scenes/antagonist.gd" id="1_g3vvu"]
 [ext_resource type="Texture2D" uid="uid://dgjsr6wmnbqmj" path="res://assets/characters/Necromancer_creativekind-Sheet.png" id="1_jwb6q"]
+[ext_resource type="AudioStream" uid="uid://p1wefyupt1ui" path="res://assets/music/se/anger.ogg" id="2_80dox"]
 [ext_resource type="Script" uid="uid://coxu3gm3espt6" path="res://scenes/spawner.gd" id="3_tad21"]
 [ext_resource type="PackedScene" uid="uid://bw8aatq4xym30" path="res://scenes/fireball.tscn" id="4_i3brl"]
+[ext_resource type="AudioStream" uid="uid://cq1c0sgvhhudn" path="res://assets/music/se/fireball.ogg" id="5_3vv5y"]
 [ext_resource type="Texture2D" uid="uid://copnafav44ejk" path="res://assets/particles/angery.png" id="5_jheub"]
 [ext_resource type="Script" uid="uid://ba30l2wtlyxtm" path="res://scenes/bomb_spawner.gd" id="5_oms0e"]
 [ext_resource type="PackedScene" uid="uid://cl7ani3t77mkr" path="res://scenes/bomb.tscn" id="6_n6i5n"]
+[ext_resource type="AudioStream" uid="uid://4pmxk8ork1wb" path="res://assets/music/se/drop.ogg" id="9_fi8bu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3vvu"]
 atlas = ExtResource("1_jwb6q")
@@ -81,6 +84,7 @@ size = Vector2(11.0062895, 16.194967)
 [node name="antagonist" type="CharacterBody2D" unique_id=1599931492]
 collision_layer = 4
 script = ExtResource("1_g3vvu")
+anger_jingle = ExtResource("2_80dox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=742117700]
 position = Vector2(63.000008, 32.00001)
@@ -111,11 +115,13 @@ shape = SubResource("RectangleShape2D_g3vvu")
 position = Vector2(62, 87)
 script = ExtResource("3_tad21")
 obstacle = ExtResource("4_i3brl")
+click_sound = ExtResource("5_3vv5y")
 
 [node name="BombSpawner" type="Node2D" parent="." unique_id=328299032]
 position = Vector2(62, 87)
 script = ExtResource("5_oms0e")
 bomb_scene = ExtResource("6_n6i5n")
+drop_sound = ExtResource("9_fi8bu")
 
 [node name="anger" type="Sprite2D" parent="." unique_id=2116037195]
 position = Vector2(89, 34)

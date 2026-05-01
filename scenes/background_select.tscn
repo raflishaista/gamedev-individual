@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dl85kidfchsyn"]
+
+[ext_resource type="Texture2D" uid="uid://dsdbjihmvbivv" path="res://assets/city3/Sky-layer.png" id="1_gwc86"]
+[ext_resource type="Texture2D" uid="uid://cwlpl8y6ba6tv" path="res://assets/city3/buildings-layer.png" id="2_0md1y"]
+
+[node name="BackgroundSelect" type="MarginContainer" unique_id=629618913]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="TextureRect" parent="." unique_id=1239293928]
+layout_mode = 2
+texture = ExtResource("1_gwc86")
+expand_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1187659665]
+layout_mode = 2
+texture = ExtResource("2_0md1y")
