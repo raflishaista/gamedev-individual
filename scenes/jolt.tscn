@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://g0ag6638lgki"]
+
+[ext_resource type="Script" uid="uid://ucfrfgv1jlwi" path="res://scenes/jolt.gd" id="1_wwdy3"]
+[ext_resource type="AudioStream" uid="uid://ck5vm0rpmtxg2" path="res://assets/music/se/hit.ogg" id="2_l3eho"]
+[ext_resource type="AudioStream" uid="uid://lgxcjh6lfevl" path="res://assets/music/se/gameover.ogg" id="3_bsgri"]
+[ext_resource type="Texture2D" uid="uid://dttce0judpbax" path="res://assets/particles/electroshot.png" id="4_wwdy3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7kba2"]
+radius = 38.006554
+height = 106.009766
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3eho"]
+atlas = ExtResource("4_wwdy3")
+region = Rect2(0, 0, 63, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsgri"]
+atlas = ExtResource("4_wwdy3")
+region = Rect2(63, 0, 63, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy5r6"]
+atlas = ExtResource("4_wwdy3")
+region = Rect2(126, 0, 63, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vo5ua"]
+atlas = ExtResource("4_wwdy3")
+region = Rect2(189, 0, 63, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p71jk"]
+atlas = ExtResource("4_wwdy3")
+region = Rect2(252, 0, 63, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ds60g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3eho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsgri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy5r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vo5ua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p71jk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="fireball" type="Area2D" unique_id=612590616]
+rotation = -3.1472507
+collision_mask = 6
+script = ExtResource("1_wwdy3")
+emit_sound = ExtResource("2_l3eho")
+gameover_sound = ExtResource("3_bsgri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1800483817]
+rotation = 1.5724485
+scale = Vector2(0.29076687, 0.731404)
+shape = SubResource("CapsuleShape2D_7kba2")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1392681628]
+position = Vector2(-2, 0)
+scale = Vector2(1.3170853, 1.3170853)
+sprite_frames = SubResource("SpriteFrames_ds60g")
+autoplay = "default"
+frame_progress = 0.7228667
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=132033253]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

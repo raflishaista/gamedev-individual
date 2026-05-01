@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var spawner = $Spawner
 @onready var bomb_spawner = $BombSpawner
 @export var anger_jingle: AudioStream
+@export var collision_jingle: AudioStream
+@export var gameover_jingle: AudioStream
 
 enum State { PATROL, ENRAGED, RAIN, ENRAGED_RAIN, BOMB, ENRAGED_BOMB }
 var is_raining: bool = false
@@ -241,7 +243,9 @@ func on_taunted():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("protagonist"):
 		if not body.invulnerable:
+			SoundManager.play_at(collision_jingle, global_position)
 			Global.lives -= 1
 			Global.life_lost.emit()
 		if Global.lives <= 0:
+			SoundManager.play_at(gameover_jingle, global_position)
 			get_tree().change_scene_to_file("res://scenes/Game Over.tscn")

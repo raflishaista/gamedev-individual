@@ -103,7 +103,6 @@ animations = [{
 rotation = -3.1472507
 collision_mask = 6
 script = ExtResource("1_nfeox")
-emit_sound = ExtResource("2_aw4cw")
 hit_sound = ExtResource("2_aw4cw")
 gameover_sound = ExtResource("3_3el85")
 

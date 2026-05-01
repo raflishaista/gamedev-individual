@@ -18,5 +18,5 @@ func _process(delta: float) -> void:
 		time -= delta * tick_rate
 		if time <= 0:
 			time = 0
-			get_tree().change_scene_to_file("res://scenes/Game Finish.tscn")
+			get_tree().change_scene_to_file("res://scenes/Game Finish 2.tscn")
 	pass

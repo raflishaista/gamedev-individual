@@ -1,12 +1,13 @@
 [gd_scene format=4 uid="uid://d4nydwxysw713"]
 
-[ext_resource type="Script" uid="uid://ciwhxm6lg7iyb" path="res://scenes/level1.gd" id="1_yqkch"]
+[ext_resource type="Script" uid="uid://dhre5w05o6jhl" path="res://scenes/level_2.gd" id="1_6ep0u"]
 [ext_resource type="PackedScene" uid="uid://5awcgg4qklp5" path="res://scenes/background_stage2.tscn" id="2_yqkch"]
 [ext_resource type="Texture2D" uid="uid://84psn7jdxur0" path="res://assets/city/grunge-tileset.png" id="3_hrcei"]
 [ext_resource type="PackedScene" uid="uid://cms4j17ma0fmq" path="res://scenes/protagonist.tscn" id="4_xa7n4"]
-[ext_resource type="PackedScene" uid="uid://bglsn4anrk40b" path="res://scenes/antagonist.tscn" id="5_bo4dx"]
+[ext_resource type="PackedScene" uid="uid://co6tt8wt4se4j" path="res://scenes/antagonist_electric.tscn" id="5_hrcei"]
 [ext_resource type="PackedScene" uid="uid://lafd8s1ffi6f" path="res://scenes/margin_container.tscn" id="6_76toy"]
 [ext_resource type="AudioStream" uid="uid://cuee4f3mmawtk" path="res://assets/music/themes/lighning battle.ogg" id="7_6ep0u"]
+[ext_resource type="AudioStream" uid="uid://b3tnouj1cxtkn" path="res://assets/music/se/ready.ogg" id="7_hrcei"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ppgk2"]
 texture = ExtResource("3_hrcei")
@@ -97,7 +98,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ppgk2")
 
 [node name="level2" type="Node2D" unique_id=1006319056]
-script = ExtResource("1_yqkch")
+script = ExtResource("1_6ep0u")
 
 [node name="BackgroundStage2" parent="." unique_id=1411903534 instance=ExtResource("2_yqkch")]
 
@@ -108,12 +109,17 @@ tile_set = SubResource("TileSet_2r41h")
 [node name="protagonist" parent="." unique_id=289979748 instance=ExtResource("4_xa7n4")]
 position = Vector2(117, 427)
 
-[node name="antagonist" parent="." unique_id=1599931492 instance=ExtResource("5_bo4dx")]
-position = Vector2(960, 405)
+[node name="antagonist2" parent="." unique_id=1599931492 instance=ExtResource("5_hrcei")]
+position = Vector2(904, 429)
+speed = null
+gravity = null
+jump_force = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1101174760]
 
 [node name="MarginContainer" parent="CanvasLayer" unique_id=1630687316 instance=ExtResource("6_76toy")]
+ready_sound = ExtResource("7_hrcei")
+scene_to_load = "SLASH 2"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=853825354]
 stream = ExtResource("7_6ep0u")

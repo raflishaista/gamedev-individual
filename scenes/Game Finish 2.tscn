@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://dyxeub73lwn4y"]
+
+[ext_resource type="Texture2D" uid="uid://d26f2r84gml0t" path="res://assets/backgrounds/victory.png" id="1_y1gg5"]
+[ext_resource type="Texture2D" uid="uid://bo17sk3i8hnlr" path="res://assets/menu/VICTORYpsd.png" id="2_nalok"]
+[ext_resource type="Script" uid="uid://dwdsra0rp6w74" path="res://scenes/link_button_2.gd" id="3_ng5wn"]
+[ext_resource type="AudioStream" uid="uid://de0tsj6268x05" path="res://assets/music/se/menubutton.ogg" id="4_rpofr"]
+[ext_resource type="AudioStream" uid="uid://c3c0346m4q3f7" path="res://assets/music/themes/victory.ogg" id="5_8pht3"]
+
+[sub_resource type="Theme" id="Theme_ihdkw"]
+
+[node name="MarginContainer" type="MarginContainer" unique_id=998421077]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ihdkw")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1300095892]
+layout_mode = 2
+texture = ExtResource("1_y1gg5")
+stretch_mode = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1218722949]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2" unique_id=1831944647]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/VBoxContainer" unique_id=502888187]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=543851961]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=239767064]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer" unique_id=1756419004]
+layout_mode = 2
+texture = ExtResource("2_nalok")
+stretch_mode = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="." unique_id=1277754346]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer3" unique_id=991273600]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer3/VBoxContainer" unique_id=1624911391]
+layout_mode = 2
+theme_override_constants/margin_right = 100
+
+[node name="LinkButton2" type="LinkButton" parent="HBoxContainer3/VBoxContainer/MarginContainer" unique_id=1100465790]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Return to Menu "
+underline = 2
+uri = "Game START"
+script = ExtResource("3_ng5wn")
+scene_to_load = "Game START"
+click_sound = ExtResource("4_rpofr")
+
+[node name="LinkButton3" type="LinkButton" parent="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2" unique_id=591814236]
+layout_mode = 0
+offset_left = -668.0
+offset_right = -400.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 34
+text = "Retry"
+underline = 2
+uri = "Game START"
+script = ExtResource("3_ng5wn")
+scene_to_load = "level2"
+click_sound = ExtResource("4_rpofr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=508784929]
+stream = ExtResource("5_8pht3")
+autoplay = true
+
+[connection signal="pressed" from="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2" to="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2/LinkButton3" to="HBoxContainer3/VBoxContainer/MarginContainer/LinkButton2/LinkButton3" method="_on_pressed"]

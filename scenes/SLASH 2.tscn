@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b23aht6le7m5n"]
+
+[ext_resource type="Script" uid="uid://cw4jmcqp3wade" path="res://scenes/slash.gd" id="1_oo323"]
+[ext_resource type="AudioStream" uid="uid://df17tropt5ebt" path="res://assets/music/se/slash.ogg" id="2_cw2rq"]
+[ext_resource type="AudioStream" uid="uid://cb4mdgusdnjd8" path="res://assets/music/se/slash2.ogg" id="3_qg4xc"]
+[ext_resource type="Texture2D" uid="uid://pu5iivjpfhky" path="res://assets/backgrounds/slash.png" id="4_ohf6i"]
+
+[sub_resource type="Theme" id="Theme_ihdkw"]
+
+[node name="slash" type="MarginContainer" unique_id=998421077]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ihdkw")
+script = ExtResource("1_oo323")
+slash1_sound = ExtResource("2_cw2rq")
+slash2_sound = ExtResource("3_qg4xc")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1566946351]
+layout_mode = 2
+texture = ExtResource("4_ohf6i")

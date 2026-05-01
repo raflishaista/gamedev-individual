@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://pu5iivjpfhky" path="res://assets/backgrounds/slash.png" id="1_bq7uu"]
 [ext_resource type="Script" uid="uid://cw4jmcqp3wade" path="res://scenes/slash.gd" id="1_s5y64"]
+[ext_resource type="AudioStream" uid="uid://df17tropt5ebt" path="res://assets/music/se/slash.ogg" id="2_ksw16"]
+[ext_resource type="AudioStream" uid="uid://cb4mdgusdnjd8" path="res://assets/music/se/slash2.ogg" id="3_bk0eg"]
 
 [sub_resource type="Theme" id="Theme_ihdkw"]
 
@@ -13,6 +15,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ihdkw")
 script = ExtResource("1_s5y64")
+slash1_sound = ExtResource("2_ksw16")
+slash2_sound = ExtResource("3_bk0eg")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1566946351]
 layout_mode = 2
